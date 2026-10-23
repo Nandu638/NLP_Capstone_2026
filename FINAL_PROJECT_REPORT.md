@@ -95,6 +95,35 @@ and
 Because the labels are rating-aligned and their provenance is unverified,
 label percentages should not be presented as validated sentiment estimates.
 
+### Association between app and existing sentiment labels
+
+A Pearson chi-square test of independence assessed the association between
+`app_name` and the existing `sentiment` labels. The null hypothesis is that
+app name and existing sentiment label are independent; the alternative
+hypothesis is that they are associated. The observed contingency table was:
+
+| App | Negative | Neutral | Positive | Total |
+|---|---:|---:|---:|---:|
+| Amazon Shopping | 1,208 | 135 | 621 | 1,964 |
+| Flipkart | 325 | 116 | 1,459 | 1,900 |
+| Myntra | 278 | 28 | 1,670 | 1,976 |
+| **Total** | **1,811** | **279** | **3,750** | **5,840** |
+
+The chi-square test indicated a statistically significant association
+between app name and the existing sentiment labels, χ²(4, N = 5,840) =
+1460.74, p < .001, Cramér’s V = 0.354. Cramér’s V is an effect-size measure
+that summarizes the strength of association between categorical variables.
+It does not establish causation. None of the 9 expected cell counts was
+below 1, and all 9 were at least 5. At α = .05, the null hypothesis is
+rejected: app name is associated with the existing sentiment labels in this
+dataset. Independence of observations is assumed, not verified.
+
+This result concerns the existing labels only. Their provenance is
+unverified, and they align exactly with the tested rating mapping (ratings
+1–2 negative, 3 neutral, and 4–5 positive). The test does not establish
+independently validated sentiment, causation, or generalization beyond this
+dataset.
+
 ### Review length
 
 Across the 5,840 `clean_text_new` values, mean length is 82.77 characters
